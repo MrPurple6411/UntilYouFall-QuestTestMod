@@ -1,0 +1,23 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Build Qmod",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "./buildQMOD.ps1",
+            "args": ["${input:args}"]
+        }
+    ],
+    "inputs": [
+        {
+            "id": "args",
+            "type":"promptString",
+            "description": "Program Args",
+            "default": "${workspaceFolderBasename}"
+        }
+    ]
+}
