@@ -52,7 +52,7 @@ if ($useDebug -eq $true) {
     $fileName = Get-ChildItem lib*.so -Path "build/" -Name
 }
 
-& adb push build/$fileName /sdcard/QuestPatcher/com.schellgames.untilyoufall/installedMods/questtestmod/$fileName
+& adb push build/$fileName /sdcard/Android/data/com.schellgames.untilyoufall/files/mods/$fileName
 
 & $PSScriptRoot/restart-game.ps1
 
