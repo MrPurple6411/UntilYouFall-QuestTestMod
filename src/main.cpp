@@ -43,7 +43,7 @@ extern "C" void setup(ModInfo &info)
     modInfo = info;
 
     getConfig().Load(); // Load the config file
-    getLogger().info("Completed setup!");
+    getLogger().log(Logging::INFO,"Completed setup!");
 }
 
 // Called later on in the game loading - a good time to install function hooks
@@ -51,12 +51,12 @@ extern "C" void load()
 {
     il2cpp_functions::Init();
 
-    getLogger().info("Installing hooks...");
+    getLogger().log(Logging::INFO,"Installing hooks...");
     // Install our hooks (none defined yet)
     
     INSTALL_HOOK(getLogger(), OnPlayerHit)
     INSTALL_HOOK(getLogger(), KillPlayer)
     INSTALL_HOOK(getLogger(), HitResult)
 
-    getLogger().info("Installed all hooks!");
+    getLogger().log(Logging::INFO,"Installed all hooks!");
 }
