@@ -10,13 +10,34 @@
             "request": "launch",
             "script": "./buildQMOD.ps1",
             "args": ["${input:args}"]
+        },
+        {
+            "name": "Clean Build Qmod",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "./buildQMOD.ps1",
+            "args": ["${input:args} -clean"]
+        },
+        {
+            "name": "Copy Qmod to Quest2",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "./copy.ps1",
+            "args": ["${input:args}"]
+        },
+        {
+            "name": "Clean Build and Copy Qmod to Quest2",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "./copy.ps1",
+            "args": ["${input:args} -clean"]
         }
     ],
     "inputs": [
         {
             "id": "args",
             "type":"promptString",
-            "description": "Program Args",
+            "description": "QMOD filename (Default= Folder Name)",
             "default": "${workspaceFolderBasename}"
         }
     ]
