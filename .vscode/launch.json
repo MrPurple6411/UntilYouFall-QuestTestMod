@@ -12,6 +12,13 @@
             "args": ["${input:args}"]
         },
         {
+            "name": "Build Qmod (no prompt)",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "./buildQMOD.ps1",
+            "args": ["${workspaceFolderBasename}"]
+        },
+        {
             "name": "Clean Build Qmod",
             "type": "PowerShell",
             "request": "launch",
