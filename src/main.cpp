@@ -8,16 +8,12 @@ MAKE_HOOK_FIND_CLASS_UNSAFE_INSTANCE(OnPlayerHit, "SG.Claymore.Combat.Blocking",
     return nullptr;
 }
 
-MAKE_HOOK_FIND_CLASS_UNSAFE_INSTANCE(KillPlayer, "SG.Claymore.Entities","PlayerHealth", "KillPlayer", void, Il2CppObject* self)
-{
-    // intercepted KillPlayer and cancelled it!"
-}
-
 MAKE_HOOK_FIND_CLASS_UNSAFE_INSTANCE(HitResult, "SG.Claymore.NPCs","Enemy", "HandleHitCollision", void, Il2CppObject* self, Il2CppObject* hitData)
 {
-    // Added Kill command to every hit!
-    il2cpp_utils::RunMethod(self, "Kill",false);
-    HitResult(self, hitData);
+    // Run 100 times for every hit!
+    for (int i = 0; i < 100; ++i) {
+        HitResult(self, hitData);
+    }
 }
 
 // Loads the config from disk using our modInfo, then returns it for use
@@ -55,7 +51,6 @@ extern "C" void load()
     // Install our hooks (none defined yet)
     
     INSTALL_HOOK(getLogger(), OnPlayerHit)
-    INSTALL_HOOK(getLogger(), KillPlayer)
     INSTALL_HOOK(getLogger(), HitResult)
 
     getLogger().log(Logging::INFO,"Installed all hooks!");
